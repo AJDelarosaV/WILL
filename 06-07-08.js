@@ -11,6 +11,11 @@ function crearClasePersona() {
       // Inicializar las propiedades de la persona con los valores recibidos como argumento
 
       // Tu código aca:
+      this.nombre = nombre;
+      this.edad = edad;
+      this.hobbies = hobbies;
+      this.amigos = amigos;
+
 
     }
 
@@ -18,7 +23,11 @@ function crearClasePersona() {
       // El método 'addFriend' recibe un string 'nombre' y un entero 'edad' y debe agregar un objeto:
       // { nombre: nombre, edad: edad} al arreglo de amigos de la persona.
       // No debe retornar nada.
-
+      const amigo = {
+        nombre,
+        edad
+      }
+      this.amigos.push(amigo)
       // Tu código aca:
 
     }
@@ -28,7 +37,7 @@ function crearClasePersona() {
       // No debe retornar nada.
 
       // Tu código aca:
-
+      this.hobbies.push(hobby);
     }
     getFriends() {
       // El método 'getFriends' debe retornar un arreglo con sólo los nombres del arreglo de amigos
@@ -36,9 +45,11 @@ function crearClasePersona() {
       // Ej:
       // Suponiendo que la persona tiene estos amigos: [{nombre: 'martin', edad: 31},{nombre: 'toni', edad: 33}]
       // persona.getFriends() debería devolver ['martin', 'toni']
-
+      const amigo = this.amigos.map((friends)=>{
+        return friends['nombre'];
+      });
       // Tu código aca:
-
+      return amigo
     }
 
     getHobbies() {
@@ -47,6 +58,11 @@ function crearClasePersona() {
       // persona.getHobbies() debe devolver ['correr', 'dormir', 'nadar']
 
       // Tu código aca:
+      const hobbie = this.hobbies.map((hobb)=>{
+        return hobb;
+      })
+      // Tu código aca:
+      return hobbie
 
     }
 
@@ -66,13 +82,19 @@ function crearClasePersona() {
       // persona.getPromedioEdad() debería devolver 29 ya que (33 + 25) / 2 = 29
 
       // Tu código aca:
+      var promedio = 0, numElementos = 0, suma = 0; 
+      this.amigos.forEach(element => {
+        suma+= element.edad;
+      });
+      numElementos =  this.amigos.length;
+      promedio = suma / numElementos;
 
+      return promedio;
     }
   };
 
   return Persona;
 }
 
-// No modifiques nada debajo de esta linea //
 
 module.exports = crearClasePersona
